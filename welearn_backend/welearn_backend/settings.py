@@ -44,7 +44,10 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "change-me")
 
 cDEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 # DEBUG = True
-ALLOWED_HOSTS = ["welearn-backend-g57w.onrender.com", "localhost", "127.0.0.1"]
+ALLOWED_HOSTS = [
+    'welearn-backend-g57w.onrender.com',
+    'manikandan-developer24.github.io'
+]
 
 # Application definition
 
@@ -155,7 +158,8 @@ AUTH_USER_MODEL = 'core.User'
 # CORS (allow Vite frontend)
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "https://welearn-frontend.onrender.com"
+    "https://welearn-frontend.onrender.com",
+     'https://manikandan-developer24.github.io',
 ]
 CSRF_TRUSTED_ORIGINS = [
     "https://welearn-backend.onrender.com",
