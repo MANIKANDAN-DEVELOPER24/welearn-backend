@@ -109,7 +109,7 @@ def reset_admin_password(request):
     User = get_user_model()
     try:
         admin = User.objects.get(username="admin")
-        admin.set_password("newpassword123")
+        admin.set_password("password123")
         admin.save()
         return JsonResponse({"status": "password updated"})
     except User.DoesNotExist:
