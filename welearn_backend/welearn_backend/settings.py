@@ -17,17 +17,17 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Get DB URL from env or fallback
+# Single, clean DATABASES config
 DATABASE_URL = os.getenv(
     "DATABASE_URL",
     "postgres://welearn_user2:StrongPassword123@localhost:5432/welearn_db2"
 )
 
-# Single, clean DATABASES config
 DATABASES = {
     'default': dj_database_url.config(
         default=DATABASE_URL,
         conn_max_age=600,
-        ssl_require=True
+        ssl_require=not DATABASE_URL.startswith("postgres://welearn_user2")
     )
 }
 
