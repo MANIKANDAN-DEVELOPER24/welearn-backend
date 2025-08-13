@@ -104,14 +104,23 @@ def checkout(request):
 
 
 
+from django.contrib.auth import get_user_model
+from django.http import JsonResponse
+
 def make_me_admin(request):
     User = get_user_model()
-    try:
-        user = User.objects.get(username="Admin22@22")  # change to your username
-        user.is_staff = True
-        user.is_superuser = True
-        user.set_password("Admin22@22")  # optional: reset password
-        user.save()
-        return JsonResponse({"status": "success", "message": "User promoted to superuser"})
-    except User.DoesNotExist:
-        return JsonResponse({"status": "error", "message": "User not found"})
+    username = "Admin22@22"
+    password = "Admin22@22"
+
+    user, created = User.objects.get_or_create(username=username)
+    user.is_staff = True
+    user.is_superuser = True
+    user.set_password(password)
+    user.save()
+
+    return JsonResponse({
+        "status": "created" if created else "updated",
+        "message": "User is now a superuser",
+        "username": username,
+        "password": password
+    })
