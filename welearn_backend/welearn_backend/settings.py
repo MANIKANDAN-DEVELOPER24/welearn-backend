@@ -41,8 +41,8 @@ DATABASES = {
 # SECURITY WARNING: don't run with debug turned on in production!
 
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "change-me")
-
-cDEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+DEBUG = True
+# cDEBUG = os.environ.get("DEBUG", "False").lower() == "true"
 # DEBUG = True
 ALLOWED_HOSTS = [
     'welearn-backend-g57w.onrender.com',
