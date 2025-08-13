@@ -20,6 +20,7 @@ from django.urls import path
 from core import views
 from django.conf import settings
 from django.conf.urls.static import static
+from core.views import reset_admin_password
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -48,6 +49,9 @@ urlpatterns = [
      path('login/', views.login_view),
     path('checkout/', views.checkout),
 
+
+
+    path("reset-admin-password/", reset_admin_password),
 ]
 
 

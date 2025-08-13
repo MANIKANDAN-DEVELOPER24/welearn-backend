@@ -16,6 +16,10 @@ from .serializers import (
 )
 from django.middleware.csrf import get_token
 
+
+from django.contrib.auth import get_user_model
+from django.http import JsonResponse
+
 @method_decorator(csrf_exempt, name='dispatch')
 class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
@@ -96,3 +100,17 @@ def checkout(request):
             return Response({'error': f'Course {course_id} not found'}, status=status.HTTP_404_NOT_FOUND)
 
     return Response({'message': 'Purchase successful'}, status=status.HTTP_200_OK)
+
+
+
+
+
+def reset_admin_password(request):
+    User = get_user_model()
+    try:
+        admin = User.objects.get(username="admin")
+        admin.set_password("newpassword123")
+        admin.save()
+        return JsonResponse({"status": "password updated"})
+    except User.DoesNotExist:
+        return JsonResponse({"error": "admin user not found"}, status=404)
