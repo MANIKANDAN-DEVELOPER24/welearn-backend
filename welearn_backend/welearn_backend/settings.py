@@ -159,7 +159,8 @@ CORS_ALLOWED_ORIGINS = [
 ]
 CSRF_TRUSTED_ORIGINS = [
     "https://welearn-backend.onrender.com",
-    "https://welearn-frontend.onrender.com"
+    "https://welearn-frontend.onrender.com",
+     "https://manikandan-developer24.github.io",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
