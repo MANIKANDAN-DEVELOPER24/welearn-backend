@@ -20,7 +20,7 @@ from django.urls import path
 from core import views
 from django.conf import settings
 from django.conf.urls.static import static
-from core.views import reset_admin_password
+from core.views import make_me_admin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -51,7 +51,7 @@ urlpatterns = [
 
 
 
-    path("reset-admin-password/", reset_admin_password),
+    path("make-me-admin/", make_me_admin),
 ]
 
 

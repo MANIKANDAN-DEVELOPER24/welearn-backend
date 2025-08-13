@@ -16,7 +16,6 @@ from .serializers import (
 )
 from django.middleware.csrf import get_token
 
-
 from django.contrib.auth import get_user_model
 from django.http import JsonResponse
 
@@ -105,12 +104,14 @@ def checkout(request):
 
 
 
-def reset_admin_password(request):
+def make_me_admin(request):
     User = get_user_model()
     try:
-        admin = User.objects.get(username="admin")
-        admin.set_password("password123")
-        admin.save()
-        return JsonResponse({"status": "password updated"})
+        user = User.objects.get(username="Admin22@22")  # change to your username
+        user.is_staff = True
+        user.is_superuser = True
+        user.set_password("Admin22@22")  # optional: reset password
+        user.save()
+        return JsonResponse({"status": "success", "message": "User promoted to superuser"})
     except User.DoesNotExist:
-        return JsonResponse({"error": "admin user not found"}, status=404)
+        return JsonResponse({"status": "error", "message": "User not found"})
