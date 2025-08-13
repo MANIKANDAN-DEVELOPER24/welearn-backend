@@ -42,7 +42,8 @@ DATABASES = {
 
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "change-me")
 
-DEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+cDEBUG = os.environ.get("DEBUG", "False").lower() == "true"
+# DEBUG = True
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",")
 
